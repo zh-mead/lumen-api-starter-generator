@@ -48,4 +48,4 @@ _The code contribution process is not very formal. You just need to make sure th
 MIT
 
 ## Thank
-1、[GitHub - flipboxstudio/lumen-generator: A Lumen Generator You Are Missing](https://github.com/flipboxstudio/lumen-generator)
+1、[GitHub - chunpat/lumen-api-starter-generator](https://github.com/chunpat/lumen-api-starter-generator)
