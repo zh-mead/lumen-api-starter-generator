@@ -1,0 +1,12 @@
+<?php
+
+namespace DummyNamespace;
+
+use Prettus\Repository\Contracts\RepositoryInterface;
+
+/**
+ * Interface DummyClassRepository.
+ */
+interface DummyClassRepository extends RepositoryInterface
+{
+}
