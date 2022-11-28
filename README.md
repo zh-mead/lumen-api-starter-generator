@@ -19,7 +19,7 @@ $app->register(ZhMead\LumenApiStarterGenerator\LumenGeneratorServiceProvider::cl
 ## Usage
 
 ```
-➜  lumen-api-starter git:(feature_generator) ✗php artisan make:model Permission -a
+➜  $ php artisan make:model Permission -a
 Controller created successfully.
 Service created successfully.
 Resource created successfully.
