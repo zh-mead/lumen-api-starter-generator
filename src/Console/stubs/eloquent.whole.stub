@@ -4,7 +4,6 @@ namespace DummyNamespace;
 
 use App\Contracts\Repositories\DummyClassRepository;
 use App\Repositories\Models\DummyClass;
-use App\Repositories\Validators\DummyClassValidator;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 
@@ -22,16 +21,6 @@ class DummyClassRepositoryEloquent extends BaseRepository implements DummyClassR
     public function model()
     {
         return DummyClass::class;
-    }
-
-    /**
-     * Specify Validator class name.
-     *
-     * @return mixed
-     */
-    public function validator()
-    {
-       return DummyClassValidator::class;
     }
 
     /**

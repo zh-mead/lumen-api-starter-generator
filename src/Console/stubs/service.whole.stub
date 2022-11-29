@@ -73,4 +73,15 @@ class DummyClassService
         $DummyLowercaseClass = $this->DummyLowercaseClassRepository->update($request->all(),$request->get('id'));
         return $DummyLowercaseClass;
     }
+
+    /**
+    * @param Request $request
+    *
+    * @return mixed
+    * @throws \Prettus\Validator\Exceptions\ValidatorException
+    */
+    public function handleDelete($id)
+    {
+        return $this->DummyLowercaseClassRepository->delete($id);
+    }
 }
