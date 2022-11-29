@@ -6,7 +6,7 @@
 ## Installing
 
 ```shell
-$ composer require zh_mead/lumen-api-starter-generator -vvv
+$ composer require zh-mead/lumen-api-starter-generator -vvv
 ```
 
 ## Configuration
