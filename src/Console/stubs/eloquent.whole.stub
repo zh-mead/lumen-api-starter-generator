@@ -38,7 +38,7 @@ class DummyClassRepositoryEloquent extends BaseRepository implements DummyClassR
      */
     public function searchDummyClasssByPage()
     {
-        return $this->paginate(10);
+        return $this->paginate(request('per_page', 15));
     }
 
     /**
