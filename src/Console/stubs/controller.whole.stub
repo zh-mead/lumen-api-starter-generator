@@ -47,6 +47,7 @@ class DummyClassController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [], [], []);
         $DummyLowercaseClass = $this->DummyLowercaseClassService->handleStore($request);
         return $this->response->created($DummyLowercaseClass);
     }
@@ -72,6 +73,7 @@ class DummyClassController extends Controller
      */
     public function update(Request $request)
     {
+        $this->validate($request, [], [], []);
         $DummyLowercaseClass = $this->DummyLowercaseClassService->handleUpdate($request);
         return $this->response->success($DummyLowercaseClass);
     }
