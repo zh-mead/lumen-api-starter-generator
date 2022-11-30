@@ -84,6 +84,6 @@ class DummyClassController extends Controller
     public function destroy($id)
     {
         $DummyLowercaseClass = $this->DummyLowercaseClassService->handleDelete($request);
-        return $this->response->ok();
+        return $this->response->ok('操作成功');
     }
 }
