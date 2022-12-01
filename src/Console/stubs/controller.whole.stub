@@ -7,6 +7,9 @@ use App\Http\Resources\DummyClassResource;
 use Illuminate\Http\Request;
 use App\Services\DummyClassService;
 
+/**
+* DummyClass
+*/
 class DummyClassController extends Controller
 {
     /**
@@ -26,7 +29,7 @@ class DummyClassController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * 列表
      * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
@@ -39,7 +42,7 @@ class DummyClassController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 新增
      * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
@@ -57,8 +60,7 @@ class DummyClassController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
+     * 详情
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
      */
@@ -69,7 +71,7 @@ class DummyClassController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 更新
      * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
@@ -88,8 +90,7 @@ class DummyClassController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
+     * 删除
      * @param  int  $id
      */
     public function destroy($id)
