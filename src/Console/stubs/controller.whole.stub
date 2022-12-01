@@ -56,7 +56,7 @@ class DummyClassController extends Controller
             'status' => 'required|integer',
         ], [], []);
         $DummyLowercaseClass = $this->DummyLowercaseClassService->handleStore($request);
-        return $this->response->created($DummyLowercaseClass);
+        return $this->response->created($DummyLowercaseClass, '创建成功');
     }
 
     /**
@@ -86,7 +86,7 @@ class DummyClassController extends Controller
             'status' => 'required|integer',
         ], [], []);
         $DummyLowercaseClass = $this->DummyLowercaseClassService->handleUpdate($request);
-        return $this->response->success($DummyLowercaseClass);
+        return $this->response->success($DummyLowercaseClass, '更新成功');
     }
 
     /**
