@@ -6,10 +6,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DummyRootNamespaceHttp\Controllers\Controller;
 
+/**
+* DummyClass
+*/
 class DummyClassController extends Controller
 {
+    public function __construct(DummyClassService $DummyLowercaseClassService)
+    {
+        parent::__construct();
+        $this->middleware('checkUserPermission');
+    }
+
     /**
-     * Display a listing of the resource.
+     * 列表
      */
     public function index()
     {
@@ -17,15 +26,7 @@ class DummyClassController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * 创建
      */
     public function store(Request $request)
     {
@@ -33,33 +34,26 @@ class DummyClassController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 详情
      */
-    public function show($id)
+    public function show(Request $request)
+    {
+        //
+    }
+
+
+    /**
+     * 更新
+     */
+    public function update(Request $request)
     {
         //
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 删除
      */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
     }

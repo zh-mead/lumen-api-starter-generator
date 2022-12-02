@@ -25,6 +25,8 @@ class DummyClassController extends Controller
     public function __construct(DummyClassService $DummyLowercaseClassService)
     {
         parent::__construct();
+        $this->middleware('checkUserPermission');
+
         $this->DummyLowercaseClassService = $DummyLowercaseClassService;
     }
 
