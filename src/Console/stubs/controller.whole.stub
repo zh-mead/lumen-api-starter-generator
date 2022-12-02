@@ -66,6 +66,7 @@ class DummyClassController extends Controller
      */
     public function show(Request $request)
     {
+        $this->validate($request, ['id' => 'required|integer']);
         $DummyLowercaseClass = $this->DummyLowercaseClassService->handleProfile($request->get('id'));
         return $this->response->success($DummyLowercaseClass);
     }
@@ -95,6 +96,7 @@ class DummyClassController extends Controller
      */
     public function destroy(Request $request)
     {
+        $this->validate($request, ['id' => 'required|integer']);
         $DummyLowercaseClass = $this->DummyLowercaseClassService->handleDelete($request->get('id'));
         return $this->response->ok('删除成功');
     }
