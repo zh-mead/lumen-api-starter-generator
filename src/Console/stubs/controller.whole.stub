@@ -61,12 +61,12 @@ class DummyClassController extends Controller
 
     /**
      * 详情
-     * @param  int  $id
+     * @param  Request $request
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleProfile($id);
+        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleProfile($request->get('id'));
         return $this->response->success($DummyLowercaseClass);
     }
 
@@ -91,11 +91,11 @@ class DummyClassController extends Controller
 
     /**
      * 删除
-     * @param  int  $id
+     * @param  Request $request
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleDelete($id);
+        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleDelete($request->get('id'));
         return $this->response->ok('删除成功');
     }
 }
