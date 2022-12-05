@@ -103,6 +103,6 @@ class DummyClassController extends Controller
         if ($re) {
             return $this->response->ok('删除成功');
         }
-        return $this->response->ok('删除失败');
+        return $this->response->fail('删除失败');
     }
 }
