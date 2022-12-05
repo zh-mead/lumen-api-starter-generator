@@ -99,7 +99,10 @@ class DummyClassController extends Controller
     public function destroy(Request $request)
     {
         $this->validate($request, ['id' => 'required|integer']);
-        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleDelete($request->get('id'));
-        return $this->response->ok('删除成功');
+        $re = $this->DummyLowercaseClassService->handleDelete($request->get('id'));
+        if ($re) {
+            return $this->response->ok('删除成功');
+        }
+        return $this->response->ok('删除失败');
     }
 }
