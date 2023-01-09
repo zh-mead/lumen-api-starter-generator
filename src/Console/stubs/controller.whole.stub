@@ -52,12 +52,12 @@ class DummyClassController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $data = $this->validateData($request, [
             'name' => 'required|string|max:200',
             'sort' => 'required|integer',
             'status' => 'required|integer',
-        ], [], []);
-        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleStore($request);
+        ], []);
+        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleStore($data);
         return $this->response->created($DummyLowercaseClass, '创建成功');
     }
 
@@ -82,13 +82,13 @@ class DummyClassController extends Controller
      */
     public function update(Request $request)
     {
-        $this->validate($request, [
+        $data = $this->validateData($request, [
             'id' => 'required|integer',
             'name' => 'required|string|max:200',
             'sort' => 'required|integer',
             'status' => 'required|integer',
-        ], [], []);
-        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleUpdate($request);
+        ]);
+        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleUpdate($data);
         return $this->response->success($DummyLowercaseClass, '更新成功');
     }
 

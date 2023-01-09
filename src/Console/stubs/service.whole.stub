@@ -51,26 +51,26 @@ class DummyClassService
     }
 
     /**
-     * @param Request $request
+     * @param Array $data
      *
      * @return mixed
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function handleStore(Request $request)
+    public function handleStore($data)
     {
-        $DummyLowercaseClass = $this->DummyLowercaseClassRepository->create($request->all());
+        $DummyLowercaseClass = $this->DummyLowercaseClassRepository->create($data);
         return $DummyLowercaseClass;
     }
 
     /**
-     * @param Request $request
+     * @param Array $data
      *
      * @return mixed
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function handleUpdate(Request $request)
+    public function handleUpdate($data)
     {
-        $DummyLowercaseClass = $this->DummyLowercaseClassRepository->update($request->all(),$request->get('id'));
+        $DummyLowercaseClass = $this->DummyLowercaseClassRepository->update($data,$request->get('id'));
         return $DummyLowercaseClass;
     }
 
