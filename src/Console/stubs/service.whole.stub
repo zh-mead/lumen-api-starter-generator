@@ -70,7 +70,7 @@ class DummyClassService
      */
     public function handleUpdate($data)
     {
-        $DummyLowercaseClass = $this->DummyLowercaseClassRepository->update($data,$request->get('id'));
+        $DummyLowercaseClass = $this->DummyLowercaseClassRepository->update($data,$data['id']);
         return $DummyLowercaseClass;
     }
 
