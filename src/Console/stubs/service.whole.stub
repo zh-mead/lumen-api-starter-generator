@@ -51,7 +51,7 @@ class DummyClassService
     }
 
     /**
-     * @param Array $data
+     * @param array $data
      *
      * @return mixed
      * @throws \Prettus\Validator\Exceptions\ValidatorException
@@ -63,7 +63,7 @@ class DummyClassService
     }
 
     /**
-     * @param Array $data
+     * @param array $data
      *
      * @return mixed
      * @throws \Prettus\Validator\Exceptions\ValidatorException
