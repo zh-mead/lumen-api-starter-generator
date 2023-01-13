@@ -3,7 +3,6 @@
 namespace DummyNamespace;
 
 use App\Contracts\Repositories\DummyClassRepository;
-use App\Contracts\Criteria\DummyClassCriteria;
 use App\Repositories\Models\DummyClass;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -32,7 +31,6 @@ class DummyClassRepositoryEloquent extends BaseRepository implements DummyClassR
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
-        $this->pushCriteria(app(DummyClassCriteria::class));
     }
 
     /**
