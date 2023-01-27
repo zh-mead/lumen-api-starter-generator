@@ -87,7 +87,7 @@ class DummyClassController extends Controller
             'name' => 'required|string|max:200',
             'sort' => 'required|integer',
             'status' => 'required|integer',
-        ]);
+        ], []);
         $DummyLowercaseClass = $this->DummyLowercaseClassService->handleUpdate($data);
         return $this->response->success($DummyLowercaseClass, '更新成功');
     }
