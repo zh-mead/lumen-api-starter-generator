@@ -18,12 +18,12 @@ class DummyClassTransformer extends TransformerAbstract
         if (request()->has('id')) {
              return [
                  'id' => $DummyLowercaseClass->id,
-                 'created_at' => $DummyLowercaseClass->created_at ? $DummyLowercaseClass->created_at->format('Y-m-d H:i:s') : null,
+                 'updated_at' => $DummyLowercaseClass->updated_at ? $DummyLowercaseClass->updated_at->format('Y-m-d H:i:s') : null,
              ];
         }
         return [
             'id' => $DummyLowercaseClass->id,
-            'created_at' => $DummyLowercaseClass->created_at ? $DummyLowercaseClass->created_at->format('Y-m-d H:i:s') : null,
+            'updated_at' => $DummyLowercaseClass->updated_at ? $DummyLowercaseClass->updated_at->format('Y-m-d H:i:s') : null,
         ];
     }
 }
