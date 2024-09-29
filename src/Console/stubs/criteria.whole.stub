@@ -31,6 +31,15 @@ class DummyClassCriteria implements CriteriaInterface
         //    $model = $model->where('name', '=', $this->request->get('name'));
         //}
 
+        if ($this->request->filled('status')) {
+            $status = $this->request->get('status');
+            $model = $model->where('status', '=', $status);
+        }
+
+        if (!$this->request->filled('orderBy')) {
+            $model = $model->orderBy('id');
+        }
+
         return $model;
     }
 }

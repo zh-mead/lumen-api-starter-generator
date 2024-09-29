@@ -13,16 +13,16 @@ class DummyClassService
     /**
      * @var DummyClassRepositoryEloquent
      */
-    private $DummyLowercaseClassRepository;
+    private $repository;
 
     /**
      * DummyClassService constructor.
      *
      * @param DummyClassRepositoryEloquent $DummyLowercaseClassRepositoryEloquent
      */
-    public function __construct(DummyClassRepositoryEloquent $DummyLowercaseClassRepositoryEloquent)
+    public function __construct(DummyClassRepositoryEloquent $repository)
     {
-        $this->DummyLowercaseClassRepository = $DummyLowercaseClassRepositoryEloquent;
+        $this->repository = $repository;
     }
 
     /**
@@ -33,10 +33,10 @@ class DummyClassService
      */
     public function handleList(Request $request)
     {
-        $this->DummyLowercaseClassRepository->pushCriteria(new DummyClassCriteria($request));
-        $this->DummyLowercaseClassRepository->setPresenter(DummyClassPresenter::class);
+        $this->repository->pushCriteria(new DummyClassCriteria($request));
+        $this->repository->setPresenter(DummyClassPresenter::class);
 
-        return $this->DummyLowercaseClassRepository->searchDummyClasssByPage();
+        return $this->repository->searchListsPage();
     }
 
     /**
@@ -46,8 +46,8 @@ class DummyClassService
      */
     public function handleProfile($id)
     {
-        $this->DummyLowercaseClassRepository->setPresenter(DummyClassPresenter::class);
-        return $this->DummyLowercaseClassRepository->searchDummyClassBy($id);
+        $this->repository->setPresenter(DummyClassPresenter::class);
+        return $this->repository->searchBy($id);
     }
 
     /**
@@ -58,7 +58,7 @@ class DummyClassService
      */
     public function handleStore($data)
     {
-        $DummyLowercaseClass = $this->DummyLowercaseClassRepository->create($data);
+        $DummyLowercaseClass = $this->repository->create($data);
         return $DummyLowercaseClass;
     }
 
@@ -70,7 +70,7 @@ class DummyClassService
      */
     public function handleUpdate($data)
     {
-        $DummyLowercaseClass = $this->DummyLowercaseClassRepository->update($data,$data['id']);
+        $DummyLowercaseClass = $this->repository->update($data,$data['id']);
         return $DummyLowercaseClass;
     }
 
@@ -82,6 +82,42 @@ class DummyClassService
     */
     public function handleDelete($id)
     {
-        return $this->DummyLowercaseClassRepository->delete($id);
+        return $this->repository->delete($id);
+    }
+
+    /**
+     * 选项
+     * @param Request $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection|mixed
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function handleSelectOptions(Request $request)
+    {
+        $this->repository->pushCriteria(new DummyClassCriteria($request));
+        return $this->repository->all(['id', 'name']);
+    }
+
+    /**
+     * 批量删除
+     * @param $ids
+     * @return mixed
+     */
+    public function handleBatchDelete($ids)
+    {
+        return $this->repository->whereIn('id', $ids)->delete();
+    }
+
+     /**
+     * @param Request $request
+     *
+     * @return mixed
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function handleAll(Request $request)
+    {
+        $this->repository->pushCriteria(new DummyClassCriteria($request));
+        $this->repository->setPresenter(DummyClassPresenter::class);
+
+        return $this->repository->get();
     }
 }

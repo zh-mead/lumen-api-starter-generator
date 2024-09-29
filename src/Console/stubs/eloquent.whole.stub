@@ -36,7 +36,7 @@ class DummyClassRepositoryEloquent extends BaseRepository implements DummyClassR
     /**
      * @return mixed
      */
-    public function searchDummyClasssByPage()
+    public function searchListsPage()
     {
         return $this->paginate(request('per_page', 15));
     }
@@ -46,7 +46,7 @@ class DummyClassRepositoryEloquent extends BaseRepository implements DummyClassR
      *
      * @return mixed
      */
-    public function searchDummyClassBy($id)
+    public function searchBy($id)
     {
         return $this->find($id);
     }

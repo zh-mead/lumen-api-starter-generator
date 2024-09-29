@@ -15,19 +15,19 @@ class DummyClassController extends Controller
     /**
     * @var DummyClassService
     */
-    private $DummyLowercaseClassService;
+    private $service;
 
     /**
      * DummyClassController constructor.
      *
      * @param DummyClassService   $DummyLowercaseClassService
      */
-    public function __construct(DummyClassService $DummyLowercaseClassService)
+    public function __construct(DummyClassService $service)
     {
         parent::__construct();
         $this->middleware('checkUserPermission');
 
-        $this->DummyLowercaseClassService = $DummyLowercaseClassService;
+        $this->service = $service;
     }
 
     /**
@@ -39,8 +39,8 @@ class DummyClassController extends Controller
      */
     public function index(Request $request)
     {
-        $DummyLowercaseClasss = $this->DummyLowercaseClassService->handleList($request);
-        return $this->response->success($DummyLowercaseClasss);
+        $lists = $this->service->handleList($request);
+        return $this->response->success($lists);
     }
 
     /**
@@ -57,8 +57,8 @@ class DummyClassController extends Controller
             'sort' => 'required|integer',
             'status' => 'required|integer',
         ], []);
-        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleStore($data);
-        return $this->response->created($DummyLowercaseClass, '创建成功');
+        $model = $this->service->handleStore($data);
+        return $this->response->created($model, '创建成功');
     }
 
     /**
@@ -69,8 +69,8 @@ class DummyClassController extends Controller
     public function show(Request $request)
     {
         $this->validate($request, ['id' => 'required|integer']);
-        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleProfile($request->get('id'));
-        return $this->response->success($DummyLowercaseClass);
+        $model = $this->service->handleProfile($request->get('id'));
+        return $this->response->success($model);
     }
 
     /**
@@ -88,8 +88,8 @@ class DummyClassController extends Controller
             'sort' => 'required|integer',
             'status' => 'required|integer',
         ], []);
-        $DummyLowercaseClass = $this->DummyLowercaseClassService->handleUpdate($data);
-        return $this->response->success($DummyLowercaseClass, '更新成功');
+        $model = $this->service->handleUpdate($data);
+        return $this->response->success($model, '更新成功');
     }
 
     /**
@@ -99,10 +99,35 @@ class DummyClassController extends Controller
     public function destroy(Request $request)
     {
         $this->validate($request, ['id' => 'required|integer']);
-        $re = $this->DummyLowercaseClassService->handleDelete($request->get('id'));
+        $re = $this->service->handleDelete($request->get('id'));
         if ($re) {
             return $this->response->ok('删除成功');
         }
         return $this->response->fail('删除失败');
+    }
+
+     /**
+     * 批量删除
+     * @param Request $request
+     */
+    public function batchDelete(Request $request)
+    {
+        $ids = $this->validateData($request, ['ids' => 'required|array']);
+        $re = $this->service->handleBatchDelete($ids);
+        if ($re) {
+            return $this->response->ok('删除成功');
+        }
+        return $this->response->fail('删除失败');
+    }
+
+    /**
+     * 选项
+     * @must
+     * @param Request $request
+     */
+    public function selectOptions(Request $request)
+    {
+        $lists = $this->service->handleSelectOptions($request);
+        return $this->response->success($lists);
     }
 }
