@@ -120,4 +120,16 @@ class DummyClassService
 
         return $this->repository->get();
     }
+
+     /**
+     * @param Request $request
+     *
+     * @return mixed
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function handleIds(Request $request)
+    {
+        $this->repository->pushCriteria(new DummyClassCriteria($request));
+        return $this->repository->pluck('id');
+    }
 }

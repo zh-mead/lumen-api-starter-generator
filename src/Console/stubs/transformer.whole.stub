@@ -13,17 +13,17 @@ class DummyClassTransformer extends TransformerAbstract
     * @param DummyClass $DummyLowercaseClass
     * @return array
     */
-    public function transform(DummyClass $DummyLowercaseClass)
+    public function transform(DummyClass $model)
     {
         if (request()->has('id')) {
              return [
-                 'id' => $DummyLowercaseClass->id,
-                 'updated_at' => $DummyLowercaseClass->updated_at ? $DummyLowercaseClass->updated_at->format('Y-m-d H:i:s') : null,
+                 'id' => $model->id,
+                 'updated_at' => $model->updated_at ? $model->updated_at->format('Y-m-d H:i:s') : null,
              ];
         }
         return [
-            'id' => $DummyLowercaseClass->id,
-            'updated_at' => $DummyLowercaseClass->updated_at ? $DummyLowercaseClass->updated_at->format('Y-m-d H:i:s') : null,
+            'id' => $model->id,
+            'updated_at' => $model->updated_at ? $model->updated_at->format('Y-m-d H:i:s') : null,
         ];
     }
 }
