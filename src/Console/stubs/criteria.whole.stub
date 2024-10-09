@@ -30,7 +30,7 @@ class DummyClassCriteria implements CriteriaInterface
         //if ($this->request->filled('name')) {
         //    $model = $model->where('name', '=', $this->request->get('name'));
         //}
-        
+
         if ($this->request->filled('name')) {
             $val = $this->request->get('name');
             $model = $model->where('name', 'like', "%{$val}%");
@@ -47,7 +47,7 @@ class DummyClassCriteria implements CriteriaInterface
         }
 
         if (!$this->request->filled('orderBy')) {
-            $model = $model->orderBy('id');
+            $model = $model->orderByDesc('id');
         }
 
         return $model;
